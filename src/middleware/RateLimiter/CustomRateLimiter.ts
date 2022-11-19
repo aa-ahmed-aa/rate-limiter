@@ -15,7 +15,7 @@ class CustomRateLimiter extends RateLimiter implements RateLimiterInterface {
 
     getRequestsLimit(request) {
         const requestData = requestsDatabase.find(item => {
-           return request.url === item.url;
+           return request.originalUrl === item.url;
         });
 
         if(!requestData) {
