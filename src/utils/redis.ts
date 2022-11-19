@@ -7,7 +7,6 @@ export async function initRedis() {
         const REDIS_HOST = process.env.REDIS_HOST || 'redis';
         const REDIS_PORT = (process.env.REDIS_PORT || 6379) as number;
 
-        console.log(`redis://${REDIS_HOST}:${REDIS_PORT}`);
         redis = createClient({
             url: `redis://${REDIS_HOST}:${REDIS_PORT}`
         });

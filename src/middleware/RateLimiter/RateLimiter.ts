@@ -38,7 +38,7 @@ export class RateLimiter implements RateLimiterInterface{
 
                 if(this.isValidWindow(latestWindow) && latestWindow.requestCount >= requestsLimit) {
                     return response.status(429).send(
-                        `You have exceeded the ${requestsLimit} requests / hrs limit! you can try again ${
+                        `You have exceeded the ${requestsLimit} requests / hr limit! you can try again ${
                             currentRequestTime.add(( (latestWindow.startWindowTimestamp + this.window_size_in_seconds) - currentRequestTime.unix()), 'seconds').format('h:mm:ss A')
                         }`
                     );
