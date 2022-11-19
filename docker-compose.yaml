@@ -1,0 +1,11 @@
+version: '3.4'
+services:
+  outvio_api:
+    build: .
+    env_file: .env
+    ports:
+      - "3000:3000"
+  redis:
+    image: 'redis:7-alpine'
+    ports:
+      - "6379:6379"
