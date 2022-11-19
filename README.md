@@ -14,7 +14,7 @@ $ docker compose up --build
 
 ## Benchmarking
 - use [Apache Benchmark](https://httpd.apache.org/docs/2.4/programs/ab.html) to send test concurrent requests / sec
-`ab -c 100 -t 5 "http://localhost:3000/public`
+`ab -c 100 -t 5 "http://localhost:3000/public"`
 
 - Postman collection [outvio.postman_collection.json](https://github.com/aa-ahmed-aa/rate-limiter/blob/master/outvio.postman_collection.json)
 
