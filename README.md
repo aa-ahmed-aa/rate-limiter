@@ -6,8 +6,11 @@ Basic auth with rate limiting feature
 - Docker
 
 ## Install
+```
+$ cp .env.example .env
 
-- `docker compose up --build`
+$ docker compose up --build
+```
 
 ## Benchmarking
 - use [Apache Benchmark](https://httpd.apache.org/docs/2.4/programs/ab.html) to send test concurrent requests / sec
