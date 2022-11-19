@@ -1,18 +1,16 @@
-# Outvio
+# Rate Limiter
 Basic auth with rate limiting feature
 
 ## Requirements
 
 - Docker
-- Node v16.14.2
-- npm
 
 ## Install
 
 - `docker compose up --build`
 
 ## Benchmarking
-- use ![Apache Benchmark](https://httpd.apache.org/docs/2.4/programs/ab.html) to send test concurrent requests / sec
+- use [Apache Benchmark](https://httpd.apache.org/docs/2.4/programs/ab.html) to send test concurrent requests / sec
 `ab -c 100 -t 5 "http://localhost:3000/public` feel free to play with command
 
 
