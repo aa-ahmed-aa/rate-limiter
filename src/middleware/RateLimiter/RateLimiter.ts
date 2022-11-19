@@ -3,25 +3,22 @@ import {getFromCache, putToCache} from '../../utils/redis';
 
 declare type RateLimiterOptions = {
     window_size_in_seconds?: number,
-    max_window_request_count: number,
 };
 
 export declare interface RateLimiterInterface {
     init(request, response, next);
     trackByField(request: any);
+    getRequestsLimit(request): number;
 }
+
+const DEFAULT_REQUESTS_WINDOW_LIMIT = 100;
 
 export class RateLimiter implements RateLimiterInterface{
     private window_size_in_seconds = 60 * 60;
-    private max_window_request_count = 100;
-
-    constructor(options: RateLimiterOptions) {
-        this.window_size_in_seconds = options.window_size_in_seconds ?? this.window_size_in_seconds;
-        this.max_window_request_count = options.max_window_request_count ?? this.max_window_request_count;
-    }
 
     async init(request, response, next) {
         try {
+            const requestsLimit = this.getRequestsLimit(request);
             const trackRequestBy = this.trackByField(request);
 
             const buckets = await getFromCache(trackRequestBy);
@@ -39,9 +36,9 @@ export class RateLimiter implements RateLimiterInterface{
             } else {
                 let latestWindow = buckets[buckets.length - 1];
 
-                if(this.isValidWindow(latestWindow) && latestWindow.requestCount >= this.max_window_request_count) {
+                if(this.isValidWindow(latestWindow) && latestWindow.requestCount >= requestsLimit) {
                     return response.status(429).send(
-                        `You have exceeded the ${this.max_window_request_count} requests / hrs limit! you can try again ${
+                        `You have exceeded the ${requestsLimit} requests / hrs limit! you can try again ${
                             currentRequestTime.add(( (latestWindow.startWindowTimestamp + this.window_size_in_seconds) - currentRequestTime.unix()), 'seconds').format('h:mm:ss A')
                         }`
                     );
@@ -75,5 +72,9 @@ export class RateLimiter implements RateLimiterInterface{
 
     trackByField(request: any) {
         return `ip_${request.ip}`;
+    }
+
+    getRequestsLimit(request): number {
+        return DEFAULT_REQUESTS_WINDOW_LIMIT;
     }
 }

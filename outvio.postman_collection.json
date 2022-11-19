@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "6ec9635f-13ff-48b4-979c-2075a6304e88",
+		"name": "outvio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19301044"
+	},
+	"item": [
+		{
+			"name": "5 routes",
+			"item": [
+				{
+					"name": "/apis/route1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/route1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apis/route1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/apis/route2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/route2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apis/route2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/apis/route3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/route3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apis/route3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/apis/route4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/route4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apis/route4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/apis/route5",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/route5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apis/route5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/public",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/public",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"public"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/private",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth_token",
+						"value": "outvio123",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/private",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"private"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

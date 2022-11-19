@@ -13,6 +13,7 @@ Basic auth with rate limiting feature
 - use [Apache Benchmark](https://httpd.apache.org/docs/2.4/programs/ab.html) to send test concurrent requests / sec
 `ab -c 100 -t 5 "http://localhost:3000/public` feel free to play with command
 
+- use `outvio.postman_collection.json` for PostMan collection
 
 ## TODO
 
