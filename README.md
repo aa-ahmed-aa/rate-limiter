@@ -26,4 +26,4 @@ Basic auth with rate limiting feature
   - for private endpoint to rate limit by token to 200 req/hour (env_var)
 - [x] in the response with 429 status code and show an error message about current limit for that user account, and display when (time) the user can make the next request
 - [x] cache using redis to enhance performance
-- [ ] BONUS custom limit rate limiter
+- [x] BONUS custom limit rate limiter
