@@ -1,7 +1,7 @@
 import {RateLimiter, RateLimiterInterface} from './RateLimiter';
 
 class IpRateLimiter extends RateLimiter implements RateLimiterInterface {
-    getRequestsLimit(request) {
+    async getRequestsLimit(request): Promise<number> {
         return (process.env.IP_RATE_LIMITER_LIMIT || 100) as number;
     }
 }

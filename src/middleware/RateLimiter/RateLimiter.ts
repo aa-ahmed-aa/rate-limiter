@@ -8,7 +8,7 @@ declare type RateLimiterOptions = {
 export declare interface RateLimiterInterface {
     init(request, response, next);
     trackByField(request: any);
-    getRequestsLimit(request): number;
+    getRequestsLimit(request): Promise<number>;
 }
 
 const DEFAULT_REQUESTS_WINDOW_LIMIT = 100;
@@ -18,7 +18,7 @@ export class RateLimiter implements RateLimiterInterface{
 
     async init(request, response, next) {
         try {
-            const requestsLimit = this.getRequestsLimit(request);
+            const requestsLimit = await this.getRequestsLimit(request);
             const trackRequestBy = this.trackByField(request);
 
             const buckets = await getFromCache(trackRequestBy);
@@ -74,7 +74,7 @@ export class RateLimiter implements RateLimiterInterface{
         return `ip_${request.ip}`;
     }
 
-    getRequestsLimit(request): number {
+    async getRequestsLimit(request): Promise<number> {
         return DEFAULT_REQUESTS_WINDOW_LIMIT;
     }
 }

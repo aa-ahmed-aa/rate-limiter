@@ -5,7 +5,7 @@ class TokenRateLimiter extends RateLimiter implements RateLimiterInterface {
         return `token_${request.headers['auth_token']}`;
     }
 
-    getRequestsLimit(): number {
+    async getRequestsLimit(): Promise<number> {
         return (process.env.TOKEN_RATE_LIMITER_LIMIT || 200) as number;
     }
 }

@@ -1,4 +1,5 @@
 import {RateLimiter, RateLimiterInterface} from './RateLimiter';
+import {getFromCache, putToCache} from "../../utils/redis";
 
 const requestsDatabase = [
     {url: '/apis/route1', limit: 1},
@@ -13,16 +14,24 @@ class CustomRateLimiter extends RateLimiter implements RateLimiterInterface {
         return `ip:${request.ip}:${request.url}`;
     }
 
-    getRequestsLimit(request) {
-        const requestData = requestsDatabase.find(item => {
+    async getRequestsLimit(request) {
+
+        let routesData = await getFromCache('routesData');
+
+        if(!routesData) {
+            await putToCache('routesData', requestsDatabase);
+            routesData = requestsDatabase
+        }
+
+        const routeData = routesData.find(item => {
            return request.originalUrl === item.url;
         });
 
-        if(!requestData) {
+        if(!routeData) {
             throw new Error(`i can't find this route to ratelimit`);
         }
 
-        return requestData.limit;
+        return routeData.limit;
 
     }
 }

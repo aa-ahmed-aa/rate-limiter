@@ -11,7 +11,7 @@ Basic auth with rate limiting feature
 
 ## Benchmarking
 - use [Apache Benchmark](https://httpd.apache.org/docs/2.4/programs/ab.html) to send test concurrent requests / sec
-`ab -c 100 -t 5 "http://localhost:3000/public` feel free to play with command
+`ab -c 100 -t 5 "http://localhost:3000/public`
 
 - use [outvio.postman_collection.json](https://github.com/aa-ahmed-aa/rate-limiter/blob/master/outvio.postman_collection.json) for PostMan Collection
 
@@ -26,4 +26,4 @@ Basic auth with rate limiting feature
   - for private endpoint to rate limit by token to 200 req/hour (env_var)
 - [x] in the response with 429 status code and show an error message about current limit for that user account, and display when (time) the user can make the next request
 - [x] cache using redis to enhance performance
-- [x] BONUS custom limit rate limiter
+- [x] BONUS custom rate limiter
